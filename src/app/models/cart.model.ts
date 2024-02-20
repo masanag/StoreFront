@@ -9,6 +9,12 @@ export class Cart {
   }
 
   addItem(product: Product, quantity: number) {
+    const foundItem = this.items.find(item => item.product.id === product.id);
+
+    if(foundItem) {
+      foundItem.quantity += quantity;
+    } else {
     this.items.push(new CartItem(product, quantity));
+    }
   }
 }
