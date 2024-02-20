@@ -1,0 +1,7 @@
+<!-- product-list.component.html -->
+<div *ngFor="let product of products">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.price }}</p>
+  <p>{{ product.url }}</p>
+  <!-- <img [src]="product.url" alt="{{ product.name }}" /> -->
+</div>

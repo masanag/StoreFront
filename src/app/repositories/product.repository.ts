@@ -12,7 +12,7 @@ export abstract class ProductRepository {
   providedIn: 'root'
 })
 export class ProductApiRepository extends ProductRepository {
-  private apiUrl = 'api/products';  // APIのURL
+  private apiUrl = 'api/products';  // API URL
 
   constructor(private http: HttpClient) {
     super();
