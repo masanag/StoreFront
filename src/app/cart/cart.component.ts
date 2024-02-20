@@ -17,4 +17,7 @@ export class CartComponent implements OnInit{
     this.cartItems = this.cartService.getCart().items;
   }
 
+  totalPrice(): number {
+    return this.cartService.getCart().totalPrice;
+  }
 }

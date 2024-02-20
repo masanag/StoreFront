@@ -1,4 +1,7 @@
-<div *ngFor="let item of cartItems">
+<!-- TODO: arrange layout -->
+<!-- TODO: add Amount select -->
+<!-- TODO: add buyer form -->
+<div *ngFor="let item of cartItems" class="product-container">
   <div>
     <p>{{ item.product.name }}</p>
     <p>{{ item.product.price }}</p>
@@ -10,3 +13,4 @@
     />
   </div>
 </div>
+<div>Total: ${{ totalPrice() }}</div>
