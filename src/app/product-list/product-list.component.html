@@ -1,7 +1,6 @@
 <!-- product-list.component.html -->
-<div *ngFor="let product of products">
-  <h2>{{ product.name }}</h2>
-  <p>{{ product.price }}</p>
-  <p>{{ product.url }}</p>
-  <!-- <img [src]="product.url" alt="{{ product.name }}" /> -->
+<div class="product-index">
+  <div *ngFor="let product of products" class="product-container">
+    <app-product-list-item [product]="product"></app-product-list-item>
+  </div>
 </div>
