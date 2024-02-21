@@ -25,11 +25,10 @@ export class CartComponent implements OnInit{
   }
 
   submitOrder(): void {
-    // TODO: Implement order submission
     console.log('Order submitted');
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
-    this.cartService.clearCart();
+    // TODO: move to confirmation page
   }
 }
