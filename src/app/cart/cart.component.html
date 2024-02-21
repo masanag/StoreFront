@@ -1,53 +1,57 @@
-<!-- TODO: arrange layout -->
-<div class="container">
+<div class="cart-container">
   <div class="row">
-    <div class="col-md-8">
-      <div *ngFor="let item of cartItems" class="product-container">
+    <div class="col-md-6 cart-panel">
+      <div
+        *ngFor="let item of cartItems"
+        class="product-container cart-item row"
+      >
         <!-- TODO create cart item component -->
         <!-- TODO: add Amount select -->
-        <div>
-          <p>{{ item.product.name }}</p>
-          <p>{{ item.product.price }}</p>
-          <p>{{ item.quantity }}</p>
+        <div class="col-md-3">
           <img
             [src]="item.product.url"
             alt="{{ item.product.name }}"
             class="product-image"
           />
         </div>
+        <div class="col-md-3 cart-item-details">
+          <p>{{ item.product.name }}</p>
+          <p>{{ item.product.price }}</p>
+          <p>{{ item.quantity }}</p>
+        </div>
       </div>
       <div>Total: ${{ totalPrice() }}</div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6 cart-panel">
       <form #form="ngForm" class="form-group" (ngSubmit)="submitOrder()">
-        <label for="fullName">Full name</label>
+        <label for="fullName" class="form-margin">Full name</label>
         <input
           id="fullName"
           type="text"
-          class="form-control"
+          class="form-control form-margin"
           placeholder="(minimum 3 characters)"
           name="fullName"
           required
           minlength="3"
           [(ngModel)]="fullName"
         />
-        <label for="address">Address</label>
+        <label for="address" class="form-margin">Address</label>
         <input
           id="address"
           type="text"
-          class="form-control"
+          class="form-control form-margin"
           placeholder="(minimum 6 characters)"
           name="address"
           required
           minlength="6"
           [(ngModel)]="address"
         />
-        <label for="cardNumber">Credit card number</label>
+        <label for="cardNumber" class="form-margin">Credit card number</label>
         <!-- TODO: pattern validation 16digits -->
         <input
           id="cardNumber"
           type="text"
-          class="form-control"
+          class="form-control form-margin"
           placeholder="16 digits number"
           name="cardNumber"
           required
@@ -57,8 +61,8 @@
         <!-- TODO: no product validation -->
         <input
           type="submit"
-          class="btn btn-primary"
-          value="Buy"
+          class="btn btn-primary form-margin"
+          value="Submit"
           [disabled]="form.invalid"
         />
       </form>
