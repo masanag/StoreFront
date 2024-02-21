@@ -29,6 +29,7 @@ export class CartComponent implements OnInit{
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
+    // TODO: create confirmation page
     // TODO: move to confirmation page
   }
 }
