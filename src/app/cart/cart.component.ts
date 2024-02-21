@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit{
   cardNumber: string = '';
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -29,7 +30,6 @@ export class CartComponent implements OnInit{
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
-    // TODO: create confirmation page
-    // TODO: move to confirmation page
+    this.router.navigate(['/confirmation']);
   }
 }

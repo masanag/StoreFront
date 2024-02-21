@@ -1,0 +1,8 @@
+<p>confirmation works!</p>
+<div *ngIf="errorMessage; else normalView">
+  <p>{{ errorMessage }}</p>
+</div>
+
+<ng-template #normalView>
+  <p>Total Price: {{ totalPrice() }}</p>
+</ng-template>

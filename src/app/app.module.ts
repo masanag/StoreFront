@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './cart/cart.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { CartService } from './services/cart.service';
+import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } from './repositories/cart.repository';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,8 @@ import { HeaderComponent } from './layout/header/header.component';
     ProductListComponent,
     ProductListItemComponent,
     CartComponent,
-    HeaderComponent
+    HeaderComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +30,9 @@ import { HeaderComponent } from './layout/header/header.component';
     FormsModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    { provide: CartRepository, useClass: CartMockSuccessRepository },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
