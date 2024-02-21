@@ -1,16 +1,65 @@
 <!-- TODO: arrange layout -->
 <!-- TODO: add Amount select -->
 <!-- TODO: add buyer form -->
-<div *ngFor="let item of cartItems" class="product-container">
-  <div>
-    <p>{{ item.product.name }}</p>
-    <p>{{ item.product.price }}</p>
-    <p>{{ item.quantity }}</p>
-    <img
-      [src]="item.product.url"
-      alt="{{ item.product.name }}"
-      class="product-image"
-    />
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngFor="let item of cartItems" class="product-container">
+        <div>
+          <p>{{ item.product.name }}</p>
+          <p>{{ item.product.price }}</p>
+          <p>{{ item.quantity }}</p>
+          <img
+            [src]="item.product.url"
+            alt="{{ item.product.name }}"
+            class="product-image"
+          />
+        </div>
+      </div>
+      <div>Total: ${{ totalPrice() }}</div>
+    </div>
+    <div class="col-md-4">
+      <form #form="ngForm" class="form-group" (ngSubmit)="submitOrder()">
+        <label for="fullName">Full name</label>
+        <input
+          id="fullName"
+          type="text"
+          class="form-control"
+          placeholder="(minimum 3 characters)"
+          name="fullName"
+          required
+          minlength="3"
+          [(ngModel)]="fullName"
+        />
+        <label for="address">Address</label>
+        <input
+          id="address"
+          type="text"
+          class="form-control"
+          placeholder="(minimum 6 characters)"
+          name="address"
+          required
+          minlength="6"
+          [(ngModel)]="address"
+        />
+        <label for="cardNumber">Credit card number</label>
+        <input
+          id="cardNumber"
+          type="text"
+          class="form-control"
+          placeholder="16 digits number"
+          name="cardNumber"
+          required
+          pattern="[0-9]{16}"
+          [(ngModel)]="cardNumber"
+        />
+        <input
+          type="submit"
+          class="btn btn-primary"
+          value="Buy"
+          [disabled]="form.invalid"
+        />
+      </form>
+    </div>
   </div>
 </div>
-<div>Total: ${{ totalPrice() }}</div>

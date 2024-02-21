@@ -8,6 +8,9 @@ import { CartItem } from '../models/cart-item.model';
   styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit{
+  fullName: string = '';
+  address: string = '';
+  cardNumber: string = '';
   cartItems: CartItem[] = [];
 
   constructor(private cartService: CartService) {
@@ -19,5 +22,14 @@ export class CartComponent implements OnInit{
 
   totalPrice(): number {
     return this.cartService.getCart().totalPrice;
+  }
+
+  submitOrder(): void {
+    // TODO: Implement order submission
+    console.log('Order submitted');
+    console.log('Full Name: ' + this.fullName);
+    console.log('Address: ' + this.address);
+    console.log('Card Number: ' + this.cardNumber);
+    this.cartService.clearCart();
   }
 }
