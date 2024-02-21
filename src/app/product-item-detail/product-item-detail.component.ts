@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/product.model';
 import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -11,8 +12,9 @@ import { ProductService } from '../services/product.service';
 export class ProductItemDetailComponent implements OnInit {
   id: string | null = null;
   product: Product | null = null;
+  selectedQuantity: number = 1;
 
-  constructor(private route: ActivatedRoute, private productService: ProductService){}
+  constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService){}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -27,5 +29,12 @@ export class ProductItemDetailComponent implements OnInit {
         console.error(err);
       }
     })
+  }
+
+  addToCart(product: Product, quantity: number): void {
+    if(this.product === null) {
+      throw new Error('Product not found');
+    }
+    this.cartService.addToCart(this.product, this.selectedQuantity);
   }
 }

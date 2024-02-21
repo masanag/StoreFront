@@ -1,8 +1,42 @@
 <!-- TODO: add item display component -->
-<div *ngIf="product; else notFound">
-  <p>{{ product.name }}</p>
-  <p>{{ product.price }}</p>
-  <p>{{ product.url }}</p>
+<div *ngIf="product; else notFound" class="detail-container">
+  <div class="detail-item">
+    <div class="row">
+      <div class="col-md-6">
+        <img
+          [src]="product.url"
+          alt="{{ product.name }}"
+          class="img-fluid rounded"
+        />
+      </div>
+      <div class="col-md-6">
+        <div>
+          <h2>{{ product.name }}</h2>
+          <p>{{ product.description }}</p>
+          <p>$ {{ product.price }}</p>
+          <div>
+            <select [(ngModel)]="selectedQuantity" id="" class="select-input">
+              <option
+                *ngFor="let num of [].constructor(10); let i = index"
+                [value]="i + 1"
+              >
+                {{ i + 1 }}
+              </option>
+            </select>
+          </div>
+          <button
+            (click)="addToCart(product, selectedQuantity)"
+            class="btn btn-primary"
+          >
+            Add to Cart
+          </button>
+        </div>
+        <a routerLink="/" class="btn btn-link back-link"
+          >&larr; Back to product list</a
+        >
+      </div>
+    </div>
+  </div>
 </div>
 
 <ng-template #notFound>
