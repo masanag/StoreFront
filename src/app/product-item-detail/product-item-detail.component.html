@@ -1,0 +1,10 @@
+<!-- TODO: add item display component -->
+<div *ngIf="product; else notFound">
+  <p>{{ product.name }}</p>
+  <p>{{ product.price }}</p>
+  <p>{{ product.url }}</p>
+</div>
+
+<ng-template #notFound>
+  <p>Product not found</p>
+</ng-template>

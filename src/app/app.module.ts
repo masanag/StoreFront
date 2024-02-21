@@ -13,6 +13,8 @@ import { HeaderComponent } from './layout/header/header.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CartService } from './services/cart.service';
 import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } from './repositories/cart.repository';
+import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
+import { ProductJsonRepository, ProductRepository } from './repositories/product.repository';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } fr
     ProductListItemComponent,
     CartComponent,
     HeaderComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ProductItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } fr
   ],
   providers: [
     { provide: CartRepository, useClass: CartMockSuccessRepository },
+    { provide: ProductRepository, useClass: ProductJsonRepository },
   ],
   bootstrap: [AppComponent]
 })
