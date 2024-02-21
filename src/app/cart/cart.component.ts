@@ -1,3 +1,4 @@
+// TODO: Delete button in cart
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';

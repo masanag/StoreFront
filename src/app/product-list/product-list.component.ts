@@ -1,3 +1,4 @@
+// TODO: Toast when product is added to cart
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../models/product.model';
 import { ProductService } from '../services/product.service';

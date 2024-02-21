@@ -9,6 +9,7 @@
   <div class="col-md-3 cart-item-details">
     <p>{{ item.product.name }}</p>
     <p>{{ item.product.price }}</p>
+    <!-- TODO: use ngModelChange and EventEmitter to show a toast-->
     <input type="number" min="1" [(ngModel)]="item.quantity" />
   </div>
 </div>

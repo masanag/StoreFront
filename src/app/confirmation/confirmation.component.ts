@@ -1,3 +1,5 @@
+// TODO: Create pretty confirmation template!
+// TODO: Create User Service to get user information in confirmation page
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 

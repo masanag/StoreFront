@@ -11,6 +11,7 @@ export class ProductListItemComponent {
   selectedQuantity: number = 1;
   @Input() product: Product;
 
+  // TODO: remove cartService and move it to the parent component, product-list.component.ts. then pass the addToCart method as an input to this component through EventEmitter
   constructor(private cartService: CartService) {
     this.product = new Product();
   }

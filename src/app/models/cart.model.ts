@@ -1,3 +1,4 @@
+// TODO: Toast when product is added to cart
 import { CartItem } from './cart-item.model';
 import { Product } from './product.model';
 
