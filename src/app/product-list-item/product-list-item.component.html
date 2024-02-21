@@ -2,7 +2,12 @@
 <!-- TODO: create product detail screen -->
 <!-- TODO: add link to product detail screen -->
 <div class="product-container">
-  <img [src]="product.url" alt="{{ product.name }}" class="product-image" />
+  <img
+    [src]="product.url"
+    alt="{{ product.name }}"
+    class="product-image"
+    [routerLink]="['/products', product.id]"
+  />
   <p>{{ product.name }}</p>
   <p>${{ product.price }}</p>
   <select class="select-input" [(ngModel)]="selectedQuantity">

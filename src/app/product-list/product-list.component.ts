@@ -7,9 +7,6 @@ import { ProductJsonRepository, ProductRepository } from '../repositories/produc
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
-  providers: [ProductService,
-    {provide: ProductRepository, useClass: ProductJsonRepository},
-  ]
 })
 export class ProductListComponent implements OnInit{
   products: Product[] = [];
