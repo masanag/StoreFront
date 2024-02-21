@@ -1,0 +1,14 @@
+<div *ngIf="item" class="product-container cart-item row">
+  <div class="col-md-3">
+    <img
+      [src]="item.product.url"
+      alt="{{ item.product.name }}"
+      class="product-image"
+    />
+  </div>
+  <div class="col-md-3 cart-item-details">
+    <p>{{ item.product.name }}</p>
+    <p>{{ item.product.price }}</p>
+    <input type="number" min="1" [(ngModel)]="item.quantity" />
+  </div>
+</div>

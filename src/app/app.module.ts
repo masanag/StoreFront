@@ -15,6 +15,7 @@ import { CartService } from './services/cart.service';
 import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } from './repositories/cart.repository';
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { ProductJsonRepository, ProductRepository } from './repositories/product.repository';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProductJsonRepository, ProductRepository } from './repositories/product
     CartComponent,
     HeaderComponent,
     ConfirmationComponent,
-    ProductItemDetailComponent
+    ProductItemDetailComponent,
+    CartItemComponent
   ],
   imports: [
     BrowserModule,

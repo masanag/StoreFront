@@ -1,8 +1,3 @@
-img {
-  width: 100px;
-  border-radius: 10px;
-}
-
 .form-margin {
   margin-bottom: 12px;
 }
@@ -42,4 +37,9 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 64px;
+}
+
+.total-price {
+  font-size: 2em; /* Adjust as needed */
+  font-weight: bold;
 }

@@ -1,26 +1,12 @@
 <div class="cart-container">
   <div class="row">
     <div class="col-md-6 cart-panel">
-      <div
+      <app-cart-item
         *ngFor="let item of cartItems"
-        class="product-container cart-item row"
-      >
-        <!-- TODO create cart item component -->
-        <!-- TODO: add Amount select -->
-        <div class="col-md-3">
-          <img
-            [src]="item.product.url"
-            alt="{{ item.product.name }}"
-            class="product-image"
-          />
-        </div>
-        <div class="col-md-3 cart-item-details">
-          <p>{{ item.product.name }}</p>
-          <p>{{ item.product.price }}</p>
-          <p>{{ item.quantity }}</p>
-        </div>
-      </div>
-      <div>Total: ${{ totalPrice() }}</div>
+        [item]="item"
+      ></app-cart-item>
+
+      <div class="total-price">Total: ${{ totalPrice() }}</div>
     </div>
     <div class="col-md-6 cart-panel">
       <form #form="ngForm" class="form-group" (ngSubmit)="submitOrder()">
