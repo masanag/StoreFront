@@ -1,6 +1,10 @@
 <!-- product-list.component.html -->
 <div class="product-index">
   <div *ngFor="let product of products" class="product-container">
-    <app-product-list-item [product]="product"></app-product-list-item>
+    <app-product-list-item
+      [product]="product"
+      (addToCart)="addToCart($event.product, $event.quantity)"
+      (productClicked)="navigateToProductDetails($event)"
+    ></app-product-list-item>
   </div>
 </div>

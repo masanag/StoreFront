@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../models/product.model';
 import { CartService } from '../services/cart.service';
 
@@ -10,14 +10,19 @@ import { CartService } from '../services/cart.service';
 export class ProductListItemComponent {
   selectedQuantity: number = 1;
   @Input() product: Product;
+  @Output() addToCart = new EventEmitter<{ product: Product, quantity: number }>();
+  @Output() productClicked = new EventEmitter<string>();
 
-  // TODO: remove cartService and move it to the parent component, product-list.component.ts. then pass the addToCart method as an input to this component through EventEmitter
-  constructor(private cartService: CartService) {
+  constructor() {
     this.product = new Product();
   }
 
-  addToCart(product: Product, quantity: number) {
+  onAddToCart(product: Product, quantity: number) {
+    this.addToCart.emit({ product, quantity });
     this.selectedQuantity = 1;
-    this.cartService.addToCart(product, quantity);
+  }
+
+  onProductClick() {
+    console.log('Product clicked');
   }
 }
