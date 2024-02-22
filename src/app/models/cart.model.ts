@@ -15,7 +15,7 @@ export class Cart {
     if(foundItem) {
       foundItem.quantity += quantity;
     } else {
-    this.items.push(new CartItem(product, quantity));
+      this.items.push(new CartItem(product, quantity));
     }
   }
 }
