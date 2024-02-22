@@ -4,7 +4,6 @@
     [src]="product.url"
     alt="{{ product.name }}"
     class="product-image"
-    [routerLink]="['/products', product.id]"
     (click)="onProductClick()"
   />
   <p>{{ product.name }}</p>

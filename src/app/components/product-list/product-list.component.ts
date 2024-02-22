@@ -30,7 +30,7 @@ export class ProductListComponent implements OnInit{
     this.toastr.success('Added ' + quantity + ' ' + product.name + ' to cart');
   }
 
-  navigateToProductDetails(productId: string) {
+  navigateToProductDetails(productId: number) {
     console.log('Navigating to product details for product id: ' + productId);
     this.router.navigate(['/products', productId]);
   }

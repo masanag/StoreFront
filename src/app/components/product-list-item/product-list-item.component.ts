@@ -11,7 +11,7 @@ export class ProductListItemComponent {
   selectedQuantity: number = 1;
   @Input() product: Product;
   @Output() addToCart = new EventEmitter<{ product: Product, quantity: number }>();
-  @Output() productClicked = new EventEmitter<string>();
+  @Output() productClicked = new EventEmitter<number>();
 
   constructor() {
     this.product = new Product();
@@ -23,6 +23,6 @@ export class ProductListItemComponent {
   }
 
   onProductClick() {
-    console.log('Product clicked');
+    this.productClicked.emit(this.product.id);
   }
 }
