@@ -35,7 +35,6 @@
           [(ngModel)]="address"
         />
         <label for="cardNumber" class="form-margin">Credit card number</label>
-        <!-- TODO: pattern validation 16digits -->
         <input
           id="cardNumber"
           type="text"
@@ -43,15 +42,14 @@
           placeholder="16 digits number"
           name="cardNumber"
           required
-          pattern="[0-9]*"
+          pattern="[0-9]{16}"
           [(ngModel)]="cardNumber"
         />
-        <!-- TODO: no product validation -->
         <input
           type="submit"
           class="btn btn-primary form-margin"
           value="Submit"
-          [disabled]="form.invalid"
+          [disabled]="form.invalid || cartItems.length === 0"
         />
       </form>
     </div>
