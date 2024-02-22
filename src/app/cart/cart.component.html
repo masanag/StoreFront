@@ -5,6 +5,7 @@
         *ngFor="let item of cartItems"
         [item]="item"
         (quantityChanged)="onQuantityChanged($event)"
+        (itemDeleted)="onItemDeleted($event)"
       ></app-cart-item>
 
       <div class="total-price">Total: ${{ totalPrice() }}</div>

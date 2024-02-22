@@ -18,4 +18,8 @@ export class Cart {
       this.items.push(new CartItem(product, quantity));
     }
   }
+
+  removeItem(product: Product) {
+    this.items = this.items.filter(item => item.product.id !== product.id);
+  }
 }

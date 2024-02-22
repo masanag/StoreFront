@@ -4,6 +4,8 @@ import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Product } from '../models/product.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -16,11 +18,15 @@ export class CartComponent implements OnInit{
   cardNumber: string = '';
   cartItems: CartItem[] = [];
 
+  private cartItemsSubscription: Subscription = new Subscription();
+
   constructor(private cartService: CartService, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    this.cartItems = this.cartService.getCart().items;
+    this.cartService.getCartItems().subscribe(items => {
+      this.cartItems = items;
+    });
   }
 
   totalPrice(): number {
@@ -38,6 +44,11 @@ export class CartComponent implements OnInit{
   onQuantityChanged(event: { item: CartItem, quantity: number }) {
     console.log('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
     this.toastr.success('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
+  }
 
+  onItemDeleted(event: Product) {
+    console.log('Removing item ' + event.name + ' from cart');
+    this.toastr.success('Removed ' + event.name + ' from cart');
+    this.cartService.removeFromCart(event);
   }
 }
