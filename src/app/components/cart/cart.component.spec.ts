@@ -17,7 +17,11 @@ describe('CartComponent', () => {
   let mockToastrService;
 
   beforeEach(async () => {
-    mockCartService = jasmine.createSpyObj(['getCartItems', 'getCart', 'removeFromCart']);
+    mockCartService = jasmine.createSpyObj([
+      'getCartItems',
+      'getCart',
+      'removeFromCart',
+    ]);
     mockUserService = jasmine.createSpyObj(['setUser']);
     mockRouter = jasmine.createSpyObj(['navigate']);
     mockToastrService = jasmine.createSpyObj(['success']);
@@ -44,5 +48,4 @@ describe('CartComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

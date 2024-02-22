@@ -12,14 +12,16 @@ describe('ProductItemDetailComponent', () => {
   let component: ProductItemDetailComponent;
   let fixture: ComponentFixture<ProductItemDetailComponent>;
 
-  const mockProductService = jasmine.createSpyObj('ProductService', ['getProduct']);
+  const mockProductService = jasmine.createSpyObj('ProductService', [
+    'getProduct',
+  ]);
   mockProductService.getProduct.and.returnValue(of({})); // Return an Observable
   const mockCartService = jasmine.createSpyObj('CartService', ['addToCart']);
   const mockToastrService = jasmine.createSpyObj('ToastrService', ['success']);
   const mockActivatedRoute = {
     snapshot: {
-      paramMap: convertToParamMap({ id: '1' })  // or whatever you need to return
-    }
+      paramMap: convertToParamMap({ id: '1' }), // or whatever you need to return
+    },
   };
 
   beforeEach(async () => {

@@ -18,8 +18,14 @@ describe('CartItemComponent', () => {
     fixture = TestBed.createComponent(CartItemComponent);
     component = fixture.componentInstance;
     mockCartItem = {
-      product: { id: 1, name: 'Test Product', price: 100, url: 'http://test.com', description: 'Test Description' },
-      quantity: 1
+      product: {
+        id: 1,
+        name: 'Test Product',
+        price: 100,
+        url: 'http://test.com',
+        description: 'Test Description',
+      },
+      quantity: 1,
     };
     component.item = mockCartItem;
     fixture.detectChanges();
@@ -32,12 +38,17 @@ describe('CartItemComponent', () => {
   it('should emit quantityChanged event when onQuantityChange is called', () => {
     spyOn(component.quantityChanged, 'emit');
     component.onQuantityChange(2);
-    expect(component.quantityChanged.emit).toHaveBeenCalledWith({item: mockCartItem, quantity: 2});
-  })
+    expect(component.quantityChanged.emit).toHaveBeenCalledWith({
+      item: mockCartItem,
+      quantity: 2,
+    });
+  });
 
   it('should emit itemDeleted event when onDeleteClick is called', () => {
     spyOn(component.itemDeleted, 'emit');
     component.onDeleteClick();
-    expect(component.itemDeleted.emit).toHaveBeenCalledWith(mockCartItem.product);
+    expect(component.itemDeleted.emit).toHaveBeenCalledWith(
+      mockCartItem.product,
+    );
   });
 });

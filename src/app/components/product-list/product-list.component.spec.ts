@@ -11,25 +11,23 @@ describe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
 
-
   const mockProductRepository = {
     // Add methods that your component uses from ProductRepository
     // For example, if your component uses getProducts method, add it like this:
-    getProducts: () => of([])  // returns an empty array
+    getProducts: () => of([]), // returns an empty array
   };
 
   const mockCartRepository = {
     // Add methods that your component uses from CartRepository
     // For example, if your component uses addToCart method, add it like this:
-    addToCart: () => {}  // does nothing
+    addToCart: () => {}, // does nothing
   };
 
-
-const mockToastrService = {
-  // Add methods that your component uses from ToastrService
-  // For example, if your component uses success method, add it like this:
-  success: () => {}  // does nothing
-};
+  const mockToastrService = {
+    // Add methods that your component uses from ToastrService
+    // For example, if your component uses success method, add it like this:
+    success: () => {}, // does nothing
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,7 +36,7 @@ const mockToastrService = {
       providers: [
         { provide: ProductService, useValue: mockProductRepository },
         { provide: CartService, useValue: mockCartRepository },
-        { provide: ToastrService, useValue: mockToastrService },  // Add this line
+        { provide: ToastrService, useValue: mockToastrService }, // Add this line
       ],
     }).compileComponents();
 

@@ -40,7 +40,7 @@ describe('CartService', () => {
       expect(items.length).toBe(1);
       expect(items[0].product).toEqual(mockProduct);
       expect(items[0].quantity).toBe(1);
-      done()
+      done();
     });
   });
 
@@ -51,7 +51,7 @@ describe('CartService', () => {
       expect(items.length).toBe(0);
       done();
     });
-  })
+  });
 
   it('should get the cart', () => {
     const cart = service.getCart();
@@ -65,7 +65,7 @@ describe('CartService', () => {
       expect(items.length).toBe(0);
       done();
     });
-  })
+  });
 
   it('should complete the order', (done) => {
     service.completeOrder().subscribe((response) => {

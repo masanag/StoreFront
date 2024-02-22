@@ -1,5 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import {
+  HttpClientTestingModule,
+  HttpTestingController,
+} from '@angular/common/http/testing';
 import { ProductJsonRepository } from './product.repository';
 import { Product } from '../models/product.model';
 
@@ -10,7 +13,7 @@ describe('ProductJsonRepository', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [ProductJsonRepository]
+      providers: [ProductJsonRepository],
     });
 
     repository = TestBed.inject(ProductJsonRepository);
@@ -22,9 +25,17 @@ describe('ProductJsonRepository', () => {
   });
 
   it('should get products', () => {
-    const mockProducts: Product[] = [{ id: 1, name: 'Product 1', price: 100, url: 'product-1', description: 'Description 1'}];
+    const mockProducts: Product[] = [
+      {
+        id: 1,
+        name: 'Product 1',
+        price: 100,
+        url: 'product-1',
+        description: 'Description 1',
+      },
+    ];
 
-    repository.getProducts().subscribe(products => {
+    repository.getProducts().subscribe((products) => {
       expect(products).toEqual(mockProducts);
     });
 
@@ -34,9 +45,15 @@ describe('ProductJsonRepository', () => {
   });
 
   it('should get product by id', () => {
-    const mockProduct: Product = { id: 1, name: 'Product 1', price: 100, url: 'product-1', description: 'Description 1'};
+    const mockProduct: Product = {
+      id: 1,
+      name: 'Product 1',
+      price: 100,
+      url: 'product-1',
+      description: 'Description 1',
+    };
 
-    repository.getProduct(1).subscribe(product => {
+    repository.getProduct(1).subscribe((product) => {
       expect(product).toEqual(mockProduct);
     });
 
