@@ -1,6 +1,6 @@
 // repositories/product.repository.ts
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, mergeMap, of, tap, throwError } from 'rxjs';
+import { Observable, mergeMap, of, tap, throwError } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Injectable } from '@angular/core'; // Import the Injectable decorator
 

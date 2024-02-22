@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductRepository } from '../repositories/product.repository';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({

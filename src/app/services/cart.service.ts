@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../models/cart.model';
 import { Product } from '../models/product.model';
-import { CartRepository } from '../repositories/cart.repository';
+import { CartRepository, OrderResponse } from '../repositories/cart.repository';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem } from '../models/cart-item.model';
 
@@ -38,7 +38,7 @@ export class CartService {
     this.cartItems.next(this.cart.items);
   }
 
-  completeOrder() :Observable<any>{
+  completeOrder() :Observable<OrderResponse | never>{
     return this.repository.completeOrder();
   }
 }
