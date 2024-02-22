@@ -9,16 +9,17 @@ import { Router } from '@angular/router';
   templateUrl: './confirmation.component.html',
   styleUrl: './confirmation.component.css',
 })
-export class ConfirmationComponent implements OnInit{
+export class ConfirmationComponent implements OnInit {
   user: User | undefined;
-  errorMessage: string | null =  null;
+  errorMessage: string | null = null;
   orderTotalPrice: number | undefined;
   userName: string | undefined;
 
   constructor(
     private cartService: CartService,
     private userService: UserService,
-    private router: Router) {}
+    private router: Router,
+  ) {}
   ngOnInit(): void {
     this.user = this.userService.getUser();
     this.orderTotalPrice = this.cartService.getCart().totalPrice;
@@ -33,7 +34,7 @@ export class ConfirmationComponent implements OnInit{
       error: (error) => {
         console.error('Error submitting order: ' + error);
         this.errorMessage = 'Error submitting order: ' + error;
-      }
+      },
     });
 
     console.log('Order submitted');

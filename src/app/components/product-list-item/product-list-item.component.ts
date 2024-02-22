@@ -4,12 +4,15 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-product-list-item',
   templateUrl: './product-list-item.component.html',
-  styleUrl: './product-list-item.component.css'
+  styleUrl: './product-list-item.component.css',
 })
 export class ProductListItemComponent {
   selectedQuantity: number = 1;
   @Input() product: Product;
-  @Output() addToCart = new EventEmitter<{ product: Product, quantity: number }>();
+  @Output() addToCart = new EventEmitter<{
+    product: Product;
+    quantity: number;
+  }>();
   @Output() productClicked = new EventEmitter<number>();
 
   constructor() {

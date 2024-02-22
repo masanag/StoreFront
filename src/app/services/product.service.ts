@@ -4,7 +4,7 @@ import { Observable, map } from 'rxjs';
 import { Product } from '../models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
   constructor(private repository: ProductRepository) {}
@@ -15,7 +15,7 @@ export class ProductService {
 
   getProduct(id: number): Observable<Product> {
     return this.repository.getProduct(id).pipe(
-      map(product => {
+      map((product) => {
         if (product) {
           return product;
         } else {

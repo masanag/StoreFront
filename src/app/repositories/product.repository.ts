@@ -10,10 +10,10 @@ export abstract class ProductRepository {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductApiRepository extends ProductRepository {
-  private apiUrl = 'api/products';  // API URL
+  private apiUrl = 'api/products'; // API URL
 
   constructor(private http: HttpClient) {
     super();
@@ -29,42 +29,42 @@ export class ProductApiRepository extends ProductRepository {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductJsonRepository extends ProductRepository {
   private productCache: Product[] = [];
-  private dataUrl = 'assets/data.json';  // JSON data URL
+  private dataUrl = 'assets/data.json'; // JSON data URL
 
   constructor(private http: HttpClient) {
     super();
   }
 
   getProducts(): Observable<Product[]> {
-    if(this.productCache.length > 0) {
+    if (this.productCache.length > 0) {
       return of(this.productCache);
     } else {
-      return this.http.get<Product[]>(this.dataUrl).pipe(
-        tap((products: Product[]) => this.productCache = products)
-      )
+      return this.http
+        .get<Product[]>(this.dataUrl)
+        .pipe(tap((products: Product[]) => (this.productCache = products)));
     }
   }
 
   getProduct(id: number): Observable<Product> {
-    if(this.productCache.length > 0) {
-      const product = this.productCache.find(p => p.id === id);
-      if(product) {
+    if (this.productCache.length > 0) {
+      const product = this.productCache.find((p) => p.id === id);
+      if (product) {
         return of(product);
       } else {
-        return throwError (() => new Error('Product not found'));
+        return throwError(() => new Error('Product not found'));
       }
     } else {
       return this.getProducts().pipe(
         mergeMap((products: Product[]) => {
-          const product = products.find(p => p.id === id)
-          if(product) {
+          const product = products.find((p) => p.id === id);
+          if (product) {
             return of(product);
           } else {
-            return throwError (() => new Error('Product not found'));
+            return throwError(() => new Error('Product not found'));
           }
         }),
       );

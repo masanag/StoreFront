@@ -5,13 +5,16 @@ export class Cart {
   items: CartItem[] = [];
 
   get totalPrice(): number {
-    return this.items.reduce((total, item) => total + item.product.price * item.quantity, 0);
+    return this.items.reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0,
+    );
   }
 
   addItem(product: Product, quantity: number) {
-    const foundItem = this.items.find(item => item.product.id === product.id);
+    const foundItem = this.items.find((item) => item.product.id === product.id);
 
-    if(foundItem) {
+    if (foundItem) {
       foundItem.quantity = Number(foundItem.quantity) + Number(quantity);
     } else {
       this.items.push(new CartItem(product, quantity));
@@ -19,6 +22,6 @@ export class Cart {
   }
 
   removeItem(product: Product) {
-    this.items = this.items.filter(item => item.product.id !== product.id);
+    this.items = this.items.filter((item) => item.product.id !== product.id);
   }
 }

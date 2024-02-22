@@ -5,11 +5,14 @@ import { Product } from '../../models/product.model';
 @Component({
   selector: 'app-cart-item',
   templateUrl: './cart-item.component.html',
-  styleUrl: './cart-item.component.css'
+  styleUrl: './cart-item.component.css',
 })
 export class CartItemComponent {
   @Input() item: CartItem | undefined;
-  @Output() quantityChanged = new EventEmitter<{ item: CartItem, quantity: number }>();
+  @Output() quantityChanged = new EventEmitter<{
+    item: CartItem;
+    quantity: number;
+  }>();
   @Output() itemDeleted = new EventEmitter<Product>();
 
   onQuantityChange(newQuantity: number) {

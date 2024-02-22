@@ -8,12 +8,12 @@ import { ProductItemDetailComponent } from './components/product-item-detail/pro
 const routes: Routes = [
   { path: '', component: ProductListComponent },
   { path: 'products/:id', component: ProductItemDetailComponent },
-  { path: 'cart', component: CartComponent},
-  { path: 'confirmation', component: ConfirmationComponent},
+  { path: 'cart', component: CartComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

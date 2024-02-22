@@ -1,6 +1,6 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable, of, throwError } from "rxjs";
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, of, throwError } from 'rxjs';
 
 export interface OrderResponse {
   status: number;
@@ -17,8 +17,8 @@ export class CartMockSuccessRepository extends CartRepository {
     super();
   }
 
-  completeOrder(): Observable<OrderResponse>{
-    return of({status: 200, message: 'Order submitted'})
+  completeOrder(): Observable<OrderResponse> {
+    return of({ status: 200, message: 'Order submitted' });
   }
 }
 
@@ -28,10 +28,13 @@ export class CartMockErrorRepository extends CartRepository {
     super();
   }
 
-  completeOrder(): Observable<never>{
-    return throwError(()=> new HttpErrorResponse({
-      status: 500,
-      statusText: 'Internal Server Error'
-    }))
+  completeOrder(): Observable<never> {
+    return throwError(
+      () =>
+        new HttpErrorResponse({
+          status: 500,
+          statusText: 'Internal Server Error',
+        }),
+    );
   }
 }

@@ -6,14 +6,15 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { CartItem } from '../models/cart-item.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CartService {
   private cart = new Cart();
-  private cartItems: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([]);
+  private cartItems: BehaviorSubject<CartItem[]> = new BehaviorSubject<
+    CartItem[]
+  >([]);
 
-  constructor(private repository: CartRepository) { }
-
+  constructor(private repository: CartRepository) {}
 
   addToCart(product: Product, quantity: number) {
     this.cart.addItem(product, quantity);
@@ -38,7 +39,7 @@ export class CartService {
     this.cartItems.next(this.cart.items);
   }
 
-  completeOrder() :Observable<OrderResponse | never>{
+  completeOrder(): Observable<OrderResponse | never> {
     return this.repository.completeOrder();
   }
 }

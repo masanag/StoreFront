@@ -10,9 +10,9 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
   fullName: string = '';
   address: string = '';
   cardNumber: string = '';
@@ -24,10 +24,11 @@ export class CartComponent implements OnInit{
     private cartService: CartService,
     private userService: UserService,
     private router: Router,
-    private toastr: ToastrService) { }
+    private toastr: ToastrService,
+  ) {}
 
   ngOnInit(): void {
-    this.cartService.getCartItems().subscribe(items => {
+    this.cartService.getCartItems().subscribe((items) => {
       this.cartItems = items;
     });
   }
@@ -41,13 +42,26 @@ export class CartComponent implements OnInit{
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
-    this.userService.setUser({ fullName: this.fullName, address: this.address });
+    this.userService.setUser({
+      fullName: this.fullName,
+      address: this.address,
+    });
     this.router.navigate(['/confirmation']);
   }
 
-  onQuantityChanged(event: { item: CartItem, quantity: number }) {
-    console.log('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
-    this.toastr.success('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
+  onQuantityChanged(event: { item: CartItem; quantity: number }) {
+    console.log(
+      'Quantity of item ' +
+        event.item.product.name +
+        ' changed to ' +
+        event.quantity,
+    );
+    this.toastr.success(
+      'Quantity of item ' +
+        event.item.product.name +
+        ' changed to ' +
+        event.quantity,
+    );
   }
 
   onItemDeleted(event: Product) {

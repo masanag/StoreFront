@@ -11,9 +11,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartComponent } from './components/cart/cart.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
-import { CartMockSuccessRepository, CartRepository } from './repositories/cart.repository';
+import {
+  CartMockSuccessRepository,
+  CartRepository,
+} from './repositories/cart.repository';
 import { ProductItemDetailComponent } from './components/product-item-detail/product-item-detail.component';
-import { ProductJsonRepository, ProductRepository } from './repositories/product.repository';
+import {
+  ProductJsonRepository,
+  ProductRepository,
+} from './repositories/product.repository';
 import { CartItemComponent } from './components/cart-item/cart-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -27,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     ConfirmationComponent,
     ProductItemDetailComponent,
-    CartItemComponent
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +48,6 @@ import { ToastrModule } from 'ngx-toastr';
     { provide: CartRepository, useClass: CartMockSuccessRepository },
     { provide: ProductRepository, useClass: ProductJsonRepository },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

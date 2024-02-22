@@ -10,18 +10,22 @@ import { Router } from '@angular/router';
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
-export class ProductListComponent implements OnInit{
+export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
-  constructor(private productService: ProductService, private cartService: CartService, private toastr: ToastrService, private router: Router) {
-  }
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    private toastr: ToastrService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe((products: Product[]) => {
       this.products = products;
     });
-    console.log('Product List Component initialized')
-    console.log(this.products)
+    console.log('Product List Component initialized');
+    console.log(this.products);
   }
 
   addToCart(product: Product, quantity: number) {
