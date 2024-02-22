@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
   }
 
   submitOrder(): void {
+    // TODO: Delete console.log throughout the code
     console.log('Order submitted');
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
