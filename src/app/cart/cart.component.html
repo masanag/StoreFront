@@ -1,14 +1,15 @@
 <div class="cart-container">
   <div class="row">
-    <div class="col-md-6 cart-panel">
+    <div class="col-md-7 cart-panel">
       <app-cart-item
         *ngFor="let item of cartItems"
         [item]="item"
+        (quantityChanged)="onQuantityChanged($event)"
       ></app-cart-item>
 
       <div class="total-price">Total: ${{ totalPrice() }}</div>
     </div>
-    <div class="col-md-6 cart-panel">
+    <div class="col-md-5 cart-panel">
       <form #form="ngForm" class="form-group" (ngSubmit)="submitOrder()">
         <label for="fullName" class="form-margin">Full name</label>
         <input

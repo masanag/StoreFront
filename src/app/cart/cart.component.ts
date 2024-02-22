@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,7 @@ export class CartComponent implements OnInit{
   cardNumber: string = '';
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService, private router: Router) {
+  constructor(private cartService: CartService, private router: Router, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class CartComponent implements OnInit{
   }
 
   totalPrice(): number {
-    return this.cartService.getCart().totalPrice;
+    return parseFloat(this.cartService.getCart().totalPrice.toFixed(2));
   }
 
   submitOrder(): void {
@@ -32,5 +33,11 @@ export class CartComponent implements OnInit{
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
     this.router.navigate(['/confirmation']);
+  }
+
+  onQuantityChanged(event: { item: CartItem, quantity: number }) {
+    console.log('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
+    this.toastr.success('Quantity of item ' + event.item.product.name + ' changed to ' + event.quantity);
+
   }
 }

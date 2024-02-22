@@ -1,15 +1,21 @@
 <div *ngIf="item" class="product-container cart-item row">
-  <div class="col-md-3">
+  <div class="col-md-2">
     <img
       [src]="item.product.url"
       alt="{{ item.product.name }}"
       class="product-image"
     />
   </div>
-  <div class="col-md-3 cart-item-details">
-    <p>{{ item.product.name }}</p>
-    <p>{{ item.product.price }}</p>
-    <!-- TODO: use ngModelChange and EventEmitter to show a toast-->
-    <input type="number" min="1" [(ngModel)]="item.quantity" />
+  <div class="col-md-4 cart-item-details">
+    <strong>{{ item.product.name }}</strong>
+    <p>${{ item.product.price }}</p>
+    <span>Amount</span>:
+    <input
+      type="number"
+      min="1"
+      class="number-input"
+      [(ngModel)]="item.quantity"
+      (ngModelChange)="onQuantityChange($event)"
+    />
   </div>
 </div>

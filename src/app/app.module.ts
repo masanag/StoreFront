@@ -16,6 +16,7 @@ import { CartMockErrorRepository, CartMockSuccessRepository, CartRepository } fr
 import { ProductItemDetailComponent } from './product-item-detail/product-item-detail.component';
 import { ProductJsonRepository, ProductRepository } from './repositories/product.repository';
 import { CartItemComponent } from './cart-item/cart-item.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
     HttpClientModule,
     FormsModule,
     NgbModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     { provide: CartRepository, useClass: CartMockSuccessRepository },
