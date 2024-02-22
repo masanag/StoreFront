@@ -27,7 +27,6 @@ export class ConfirmationComponent implements OnInit{
     this.cartService.completeOrder().subscribe({
       next: (response) => {
         console.log(response);
-        this.errorMessage = 'Error submitting order: ';
         this.cartService.clearCart();
         this.userService.clearUser();
       },
