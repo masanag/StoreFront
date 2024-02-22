@@ -22,7 +22,7 @@ export class ProductItemDetailComponent implements OnInit {
     if(this.id === null) {
       throw new Error('Product ID not found');
     }
-    this.productService.getProduct(this.id).subscribe({
+    this.productService.getProduct(parseInt(this.id)).subscribe({
       next: (product: Product) => {
         this.product = product;
       },
@@ -32,11 +32,11 @@ export class ProductItemDetailComponent implements OnInit {
     })
   }
 
-  addToCart(product: Product, quantity: number): void {
-    if(product === null) {
-      throw new Error('Product not found');
+  addToCart(): void {
+    if(this.product === null) {
+      return
     }
-    this.cartService.addToCart(product, quantity);
-    this.toastr.success('Added ' + quantity + ' ' + product.name + ' to cart');
+    this.cartService.addToCart(this.product, this.selectedQuantity);
+    this.toastr.success('Added ' + this.selectedQuantity + ' ' + this.product.name + ' to cart');
   }
 }

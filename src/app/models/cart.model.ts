@@ -11,8 +11,9 @@ export class Cart {
   addItem(product: Product, quantity: number) {
     const foundItem = this.items.find(item => item.product.id === product.id);
 
+    // TODO: Avoid string concatenation occurs in adding to cart
     if(foundItem) {
-      foundItem.quantity += quantity;
+      foundItem.quantity += Number(quantity);
     } else {
       this.items.push(new CartItem(product, quantity));
     }

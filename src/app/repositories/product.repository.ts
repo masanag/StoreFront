@@ -1,6 +1,6 @@
 // repositories/product.repository.ts
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
+import { Observable, catchError, map, mergeMap, of, tap, throwError } from 'rxjs';
 import { Product } from '../models/product.model';
 import { Injectable } from '@angular/core'; // Import the Injectable decorator
 
@@ -55,16 +55,16 @@ export class ProductJsonRepository extends ProductRepository {
       if(product) {
         return of(product);
       } else {
-        throw new Error('Product not found');
+        return throwError (() => new Error('Product not found'));
       }
     } else {
       return this.getProducts().pipe(
-        map((products: Product[]) => {
+        mergeMap((products: Product[]) => {
           const product = products.find(p => p.id === id)
           if(product) {
-            return product;
+            return of(product);
           } else {
-            throw new Error('Product not found');
+            return throwError (() => new Error('Product not found'));
           }
         }),
       );

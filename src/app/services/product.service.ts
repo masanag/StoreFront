@@ -13,9 +13,8 @@ export class ProductService {
     return this.repository.getProducts();
   }
 
-  getProduct(id: string): Observable<Product> {
-    const idNumber = parseInt(id);
-    return this.repository.getProduct(idNumber).pipe(
+  getProduct(id: number): Observable<Product> {
+    return this.repository.getProduct(id).pipe(
       map(product => {
         if (product) {
           return product;
@@ -23,10 +22,6 @@ export class ProductService {
           throw new Error('Product not found');
         }
       }),
-      catchError((err: Error) => {
-        console.error(err);
-        throw err;
-      })
     );
   }
 }

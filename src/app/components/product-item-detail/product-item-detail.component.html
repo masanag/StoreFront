@@ -23,10 +23,7 @@
               </option>
             </select>
           </div>
-          <button
-            (click)="addToCart(product, selectedQuantity)"
-            class="btn btn-primary"
-          >
+          <button (click)="addToCart()" class="btn btn-primary">
             Add to Cart
           </button>
         </div>
@@ -39,5 +36,5 @@
 </div>
 
 <ng-template #notFound>
-  <p>Product not found</p>
+  <p>Sorry, Product not found</p>
 </ng-template>
