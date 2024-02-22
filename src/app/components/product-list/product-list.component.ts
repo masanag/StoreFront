@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../models/product.model';
-import { ProductService } from '../services/product.service';
-import { ProductJsonRepository, ProductRepository } from '../repositories/product.repository';
-import { CartService } from '../services/cart.service';
+import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
+import { ProductJsonRepository, ProductRepository } from '../../repositories/product.repository';
+import { CartService } from '../../services/cart.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
