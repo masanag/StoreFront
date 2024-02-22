@@ -1,8 +1,24 @@
-<p>confirmation works!</p>
-<div *ngIf="errorMessage; else normalView">
-  <p>{{ errorMessage }}</p>
+<div class="confirmation" *ngIf="errorMessage; else normalView">
+  <p class="error">{{ errorMessage }}</p>
+  <button class="back-button" (click)="goToProductList()">
+    Back to product list
+  </button>
 </div>
 
 <ng-template #normalView>
-  <p>Total Price: {{ totalPrice() }}</p>
+  <div class="confirmation">
+    <h1>Success! 🎉</h1>
+    <p class="thanks">
+      Thank you, <span class="highlight">{{ user?.fullName }}</span
+      >!
+    </p>
+    <p>
+      Your $<span class="highlight">{{ orderTotalPrice }}</span> order is
+      confirmed!
+    </p>
+    <p>Please allow 1-3 business day(s) for shipping.</p>
+    <button class="back-button" (click)="goToProductList()">
+      Back to product list
+    </button>
+  </div>
 </ng-template>

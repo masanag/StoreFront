@@ -1,4 +1,3 @@
-// TODO: Delete button in cart
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../models/cart-item.model';
@@ -6,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from '../models/product.model';
 import { Subscription } from 'rxjs';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-cart',
@@ -20,8 +20,11 @@ export class CartComponent implements OnInit{
 
   private cartItemsSubscription: Subscription = new Subscription();
 
-  constructor(private cartService: CartService, private router: Router, private toastr: ToastrService) {
-  }
+  constructor(
+    private cartService: CartService,
+    private userService: UserService,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.cartService.getCartItems().subscribe(items => {
@@ -38,6 +41,7 @@ export class CartComponent implements OnInit{
     console.log('Full Name: ' + this.fullName);
     console.log('Address: ' + this.address);
     console.log('Card Number: ' + this.cardNumber);
+    this.userService.setUser({ fullName: this.fullName, address: this.address });
     this.router.navigate(['/confirmation']);
   }
 
